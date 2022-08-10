@@ -13,6 +13,9 @@ editor_options:
 library(tidyverse)
 library(janitor)
 library(here)
+library(ggthemes)
+library(ggplot2)
+library(dplyr)
 ```
 
 ```{r}
@@ -43,5 +46,25 @@ Create a scatterplot of length1 (snout-vent length in millimeters) versus weight
 Export your scatterplot as salamander_size.png to your figs folder.
 
 ```{r}
-ggplot(data = mc_salamanders, aes(x = length1, y = weight, alpha = weight, color = species)) + geom_point() + theme_light()  + labs(x = "Length (mm)", y = "Weight (g)")
+ggplot(data = mc_salamanders, aes(
+  x = length1,
+  y = weight,
+  alpha = weight,
+  color = species
+)) + geom_point(size = 4) + theme_solarized() +
+  scale_colour_solarized("blue") + labs(
+  title = 'Pacific Giant Salamanders',
+  subtitle = "DITE",
+  x = "Length (mm)",
+  y = "Weight (g)",
+  color = "Species"
+) 
+?scale_colour_solarized
+# Ask about alpha in aes vs alpha in geom_point, added scale on side
+# why does color= species in aes make it blue instead of black
+
+```
+
+```{r}
+# ggsave(here::here("figs","salamander_size.png"))
 ```
