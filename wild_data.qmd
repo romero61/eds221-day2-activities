@@ -66,5 +66,5 @@ ggplot(data = mc_salamanders, aes(
 ```
 
 ```{r}
-# ggsave(here::here("figs","salamander_size.png"))
+ggsave(here::here("docs","salamander_size.png"))
 ```
