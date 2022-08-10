@@ -1,0 +1,57 @@
+---
+title: "R Data Types"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+# Activity 1
+
+```{r}
+vec_1 <- c(2, 5, 9, 10, 8, 12, 1, 0)
+class(vec_1)
+typeof(vec_1)
+vec_1_e3 <- vec_1[3]
+vec_1_e3
+vec_1_e1 <- vec_1[1]
+vec_1_e1
+vec_1_e5to7 <-vec_1[5:7]
+vec_1_e5to7
+vec_1_char <- as.character(vec_1)
+vec_1_char
+```
+
+```{r}
+# Create a vector called vec_2
+# vec_2 should contained named elements, where town = "Santa Barbara, location = "Rincon", swell = "south"
+vec_2 <-
+  c(town = "Santa Barbara",
+    location = "Rincon",
+    swell = "south")
+vec_2
+# Take a look at what you’ve made
+# What is the class of vector elements? class()
+class(vec_2)
+# What is the length of vec_2?
+# Access the 2nd element by name and store as vec_2_e2
+vec_2_e2 <- vec_2["location"]
+vec_2_e2
+```
+
+```{r}
+df_1 <- tribble(
+  ~region,~species, ~count,
+  "A", "otter", 12,
+  "B", "great white", 2,
+  "A", "sea lion", 36,
+  "D", "gray whale", 6
+)
+df_1
+class(df_1)
+class(df_1$species)
+max_count <- max(df_1$count)
+max_count
+```

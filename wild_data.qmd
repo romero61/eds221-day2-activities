@@ -1,0 +1,48 @@
+---
+title: "Wild data"
+format: html
+editor: visual
+execute: 
+  warning: false
+  output: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(here)
+```
+
+```{r}
+mack_verts <- read.csv(here::here("data","AS00601.csv")) %>% clean_names()
+```
+
+```{r}
+mc_wt_5 <- mack_verts$weight[5]
+mc_wt_5
+
+mc_length_8_20 <- mack_verts$length1[8:20]
+mc_length_8_20
+
+mc_dates <- mack_verts$sampledate
+mc_dates
+
+```
+
+-   Create a subset that only contains observations for Pacific Giant Salamanders (species *Dicamptodon tenebrosus*, stored in `species` as `DITE`). Store the subset as `mc_salamanders`. *Hint:* see `dplyr::filter()`!
+
+```{r}
+mc_salamanders <- mack_verts %>% filter(species == "DITE")
+mc_salamanders
+```
+
+Create a scatterplot of length1 (snout-vent length in millimeters) versus weight (grams) for all salamanders in the subset you created above, mc_salamanders. Update axis labels, title, subtitle, and add a caption with the data source. Customize point color and size, possibly opacity, and theme.
+
+Export your scatterplot as salamander_size.png to your figs folder.
+
+```{r}
+ggplot(data = mc_salamanders, aes(x = length1, y = weight, alpha = weight, color = species)) + geom_point() + theme_light()  + labs(x = "Length (mm)", y = "Weight (g)")
+```
+
