@@ -45,4 +45,3 @@ Export your scatterplot as salamander_size.png to your figs folder.
 ```{r}
 ggplot(data = mc_salamanders, aes(x = length1, y = weight, alpha = weight, color = species)) + geom_point() + theme_light()  + labs(x = "Length (mm)", y = "Weight (g)")
 ```
-

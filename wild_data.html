@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.0.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -125,19 +125,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mack_verts <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"AS00601.csv"</span>)) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>```{# {r} mc_wt_5 &lt;- mack_verts$weight[5] mc_wt_5</p>
-<p>mc_length_8_20 &lt;- mack_verts$length1[8:20] mc_length_8_20</p>
-<p>mc_dates &lt;- mack_verts$sampledate mc_dates</p>
-<pre><code>
--   Create a subset that only contains observations for Pacific Giant Salamanders (species *Dicamptodon tenebrosus*, stored in `species` as `DITE`). Store the subset as `mc_salamanders`. *Hint:* see `dplyr::filter()`!
-
-
-::: {.cell}
-
-```{.r .cell-code}
-mc_salamanders &lt;- mack_verts %&gt;% filter(species == "DITE")
-mc_salamanders</code></pre>
-<p>:::</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mc_wt_5 <span class="ot">&lt;-</span> mack_verts<span class="sc">$</span>weight[<span class="dv">5</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mc_wt_5</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mc_length_8_20 <span class="ot">&lt;-</span> mack_verts<span class="sc">$</span>length1[<span class="dv">8</span><span class="sc">:</span><span class="dv">20</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>mc_length_8_20</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>mc_dates <span class="ot">&lt;-</span> mack_verts<span class="sc">$</span>sampledate</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>mc_dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Create a subset that only contains observations for Pacific Giant Salamanders (species <em>Dicamptodon tenebrosus</em>, stored in <code>species</code> as <code>DITE</code>). Store the subset as <code>mc_salamanders</code>. <em>Hint:</em> see <code>dplyr::filter()</code>!</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mc_salamanders <span class="ot">&lt;-</span> mack_verts <span class="sc">%&gt;%</span> <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"DITE"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mc_salamanders</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create a scatterplot of length1 (snout-vent length in millimeters) versus weight (grams) for all salamanders in the subset you created above, mc_salamanders. Update axis labels, title, subtitle, and add a caption with the data source. Customize point color and size, possibly opacity, and theme.</p>
+<p>Export your scatterplot as salamander_size.png to your figs folder.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mc_salamanders, <span class="fu">aes</span>(<span class="at">x =</span> length1, <span class="at">y =</span> weight, <span class="at">alpha =</span> weight, <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_light</span>()  <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Length (mm)"</span>, <span class="at">y =</span> <span class="st">"Weight (g)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 </main>
 <!-- /main column -->
